@@ -39,7 +39,8 @@ function App() {
 
   useEffect(() => {
     console.log('renderdus')
-    muudaAktiivset(1)
+    muudaAktiivset(0)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 	return (
