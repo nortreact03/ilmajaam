@@ -2,7 +2,7 @@ function Asukohad({asukohad, muudaAktiivset}) {
     return (
         asukohad.map((koht, index) => {
             return (
-                <div onClick={() => muudaAktiivset(index)}>
+                <div key={index} onClick={() => muudaAktiivset(index)}>
                     {koht.nimetus}
                 </div>
             )
