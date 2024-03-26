@@ -36,15 +36,21 @@ function App() {
     setAktiivne(index)
     const andmed = await loeAndmed({lat: koht.lat, long: koht.long})
     setIlmPraegu(andmed)
-    console.log(andmed)
     setLisamineAvatud(false)
   }
 
+  const kustutaAsukoht = (index) => {
+    console.log('kustutatav asukoht: ' + index)
+    asukohad[index] = undefined;
+    const uus =  asukohad.filter((el) => el)
+    setAsukohad(uus)
+  }
+
   useEffect(() => {
-    console.log('renderdus')
-    muudaAktiivset(0)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    console.log(asukohad.length);
+    muudaAktiivset(asukohad.length-1);
+  }, [asukohad])
+
 
   const lisaAsukoht = ({nimetus, lat, long}) => {
     const uusAsukoht = {
@@ -55,6 +61,7 @@ function App() {
     }
 
     setAsukohad([...asukohad, uusAsukoht])
+    //muudaAktiivset(asukohad.length-1) // <-- nii ei saa kahjuks - selle asemel peame kasutama useEffecti
   }
 
   let paremPaan = (<Detailid koht={asukohad[aktiivne]} ilmPraegu={ilmPraegu}/>)
@@ -67,7 +74,11 @@ function App() {
 			<h1>Ilm</h1>
       <div className="row">
         <div className="col-4">
-        <Asukohad asukohad={asukohad}  muudaAktiivset={muudaAktiivset} />
+        <Asukohad 
+          asukohad={asukohad}  
+          muudaAktiivset={muudaAktiivset} 
+          kustutaAsukoht={kustutaAsukoht}
+        />
         <button className="btn btn-link" onClick={()=>setLisamineAvatud(true)} >Lisa</button>
         </div>
         <div className="col-8">

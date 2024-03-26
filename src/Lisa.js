@@ -10,7 +10,7 @@ function Lisa({lisaAsukoht}) {
         lisaAsukoht({nimetus, lat, long})
         setNimetus("")
         setLat("")
-        setLong("")
+        setNimetus("")
     }
 	return (
 		<form onSubmit={lisamine}>
