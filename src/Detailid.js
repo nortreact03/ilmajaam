@@ -1,7 +1,7 @@
 function Detailid({koht, ilmPraegu}) {
-    if (!ilmPraegu) {
+    if (!ilmPraegu || !koht ) {
         return (
-            <div>andmed puuduvad</div>
+            <div>laeme lehte ... </div>
         )
     }
     return (

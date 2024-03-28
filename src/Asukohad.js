@@ -1,4 +1,8 @@
 function Asukohad({asukohad, muudaAktiivset, kustutaAsukoht}) {
+    if (!asukohad || asukohad.length === 0) {
+        return <div>Asukohti pole, lisa mõni</div>
+    }
+    
     return (
         asukohad.map((koht, index) => {
             return (

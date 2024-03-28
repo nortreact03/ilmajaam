@@ -33,6 +33,9 @@ function App() {
 
   const muudaAktiivset = async (index) => {
     const koht = asukohad[index];
+    if (!koht) {
+      return;
+    }
     setAktiivne(index)
     const andmed = await loeAndmed({lat: koht.lat, long: koht.long})
     setIlmPraegu(andmed)
